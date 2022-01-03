@@ -7,13 +7,13 @@ const bookSection = document.querySelector('.books');
 
 
 const book = {
-  title: "",
-  author: "",
+    title: "",
+    author: "",
 };
 
 submitBtn.addEventListener("click", () => {
 
-    if(inputTitle.value !== '' && inputAuthor.value !== ''){
+    if (inputTitle.value !== '' && inputAuthor.value !== '') {
         const newBook = Object.create(book);
         newBook.title = inputTitle.value;
         newBook.author = inputAuthor.value;
@@ -21,15 +21,22 @@ submitBtn.addEventListener("click", () => {
 
         addBook(newBook);
     }
-    
+
 
 });
 
-function addBook(book){
-  const div = document.createElement('div');
-  div.className = 'book-wraper';
-  div.innerHTML = `<h3>${book.title}</h3>
+function addBook(book) {
+    const div = document.createElement('div');
+    div.className = `book-wraper ${book.author}${book.title}`;
+    div.innerHTML = `<h3>${book.title}</h3>
                   <h3>${book.author}</h3>
-                  <button type="button">Remove</button>`
-  bookSection.appendChild(div)
+                  <button type="button" class ="remove-button">Remove</button>`;
+    bookSection.appendChild(div);
+    const removeBtn = document.querySelectorAll('.remove-button');
+    console.log(removeBtn);
+    removeBtn.forEach((item) => {
+        item.addEventListener('click', (evt) => {
+            document.querySelector('.books').removeChild(evt.target.parentNode);
+        });
+    });
 }
