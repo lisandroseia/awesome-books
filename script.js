@@ -46,12 +46,11 @@ submitBtn.addEventListener('click', () => {
 });
 
 window.onload = () => {
-  if(localStorage.getItem('Books')){
+  if (localStorage.getItem('Books')) {
     const localBooks = JSON.parse(localStorage.getItem('Books'));
     collection = localBooks.coll;
     localBooks.coll.forEach((element) => {
       addBook(element);
     });
   }
-
 };
