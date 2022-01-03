@@ -34,9 +34,7 @@ function addBook(book) {
     bookSection.appendChild(div);
     const removeBtn = document.querySelectorAll('.remove-button');
     console.log(removeBtn);
-    removeBtn.forEach((item) => {
-        item.addEventListener('click', (evt) => {
-            document.querySelector('.books').removeChild(evt.target.parentNode);
-        });
+    removeBtn[removeBtn.length - 1].addEventListener('click', (evt) => {
+        document.querySelector('.books').removeChild(evt.target.parentNode);
     });
 }
