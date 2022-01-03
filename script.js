@@ -25,16 +25,21 @@ submitBtn.addEventListener("click", () => {
 
 });
 
+let arr = []
+
 function addBook(book) {
     const div = document.createElement('div');
-    div.className = `book-wraper ${book.author}${book.title}`;
+    div.className = `book-wraper`;
+    div.setAttribute('data-value', `${book.title}-${book.author }`);
     div.innerHTML = `<h3>${book.title}</h3>
                   <h3>${book.author}</h3>
                   <button type="button" class ="remove-button">Remove</button>`;
     bookSection.appendChild(div);
     const removeBtn = document.querySelectorAll('.remove-button');
-    console.log(removeBtn);
     removeBtn[removeBtn.length - 1].addEventListener('click', (evt) => {
         document.querySelector('.books').removeChild(evt.target.parentNode);
+       arr = evt.target.parentNode.getAttribute('data-value').split('-');
+       collection = collection.filter(item => item.title !== arr[0] && item.author !== arr[1]);
+       console.log(collection)
     });
 }
