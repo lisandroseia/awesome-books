@@ -15,7 +15,7 @@ In this webpage you can add books, or delete the old ones, and all is going to b
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://lisandroseia.github.io/awesome-books/)
 
 
 ## Getting Started
