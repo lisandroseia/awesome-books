@@ -18,7 +18,7 @@ submitBtn.addEventListener("click", () => {
         newBook.title = inputTitle.value;
         newBook.author = inputAuthor.value;
         collection.push(newBook);
-
+        populateStorage();
         addBook(newBook);
     }
 
@@ -28,7 +28,6 @@ submitBtn.addEventListener("click", () => {
 let arr = []
 
 function addBook(book) {
-    populateStorage(`${book.title}-${book.author }`);
     const div = document.createElement('div');
     div.className = `book-wraper`;
     div.setAttribute('data-value', `${book.title}-${book.author }`);
@@ -41,18 +40,17 @@ function addBook(book) {
         document.querySelector('.books').removeChild(evt.target.parentNode);
         arr = evt.target.parentNode.getAttribute('data-value').split('-');
         collection = collection.filter(item => item.title !== arr[0] && item.author !== arr[1]);
-        localStorage.removeItem(evt.target.parentNode.getAttribute('data-value'));
+        populateStorage();
     });
 }
 
-function populateStorage(bookName) {
-    localStorage.setItem(bookName, JSON.stringify({
-        author: inputAuthor.value,
-        title: inputTitle.value,
+function populateStorage() {
+    localStorage.setItem('Books', JSON.stringify({
+        coll: collection,
     }));
 }
 
-// const userDet = JSON.parse(localStorage.getItem('userDet'));
-// userName.value = userDet.username;
-// userEmail.value = userDet.useremail;
-// userMessage.value = userDet.usermsg;
+const localBooks = JSON.parse(localStorage.getItem('Books'));
+localBooks.coll.forEach((element) => {
+    addBook(element);
+});
