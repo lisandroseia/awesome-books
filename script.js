@@ -45,11 +45,13 @@ submitBtn.addEventListener('click', () => {
   }
 });
 
-const localBooks = JSON.parse(localStorage.getItem('Books'));
-localBooks.coll.forEach((element) => {
-  addBook(element);
-});
-
 window.onload = () => {
-  collection = localBooks.coll;
+  if(localStorage.getItem('Books')){
+    const localBooks = JSON.parse(localStorage.getItem('Books'));
+    collection = localBooks.coll;
+    localBooks.coll.forEach((element) => {
+      addBook(element);
+    });
+  }
+
 };
