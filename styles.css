@@ -2,3 +2,17 @@ body{
     width: 60%;
     margin: 200px auto ;
 }
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+input{
+    width: 20%;
+}
+
+.add-btn{
+    width: 40px;
+}
