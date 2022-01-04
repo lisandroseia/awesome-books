@@ -1,0 +1,24 @@
+body {
+  width: 60%;
+  margin: 200px auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 20px;
+}
+
+input {
+  width: 20%;
+}
+
+.add-btn {
+  width: 40px;
+}
+
+.book-wraper {
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+}
