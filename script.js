@@ -8,13 +8,18 @@ class collection {
     this.books = books;
   }
 
+  set booksArray(books) {
+    this.books = books;
+  }
+
   add(data) {
-    if(this.books.filter(item => item.author == data.author && item.title == data.title).length > 0){
+    if (this.books.filter(item => item.author == data.author && item.title == data.title).length > 0) {
       return;
     }
     this.books.push(data);
     this.display(data);
     this.remove();
+    this.populateStorage();
   }
 
   remove() {
@@ -26,18 +31,25 @@ class collection {
   }
 
   display(data) {
-  const div = document.createElement('div');
-  div.className = 'book-wraper';
-  div.innerHTML = `<h3>${data.title}</h3>
+    const div = document.createElement('div');
+    div.className = 'book-wraper';
+    div.innerHTML = `<h3>${data.title}</h3>
                   <h3>${data.author}</h3>
                   <button data-value="${data.title}-${data.author}" type="button" class ="remove-button">Remove</button>`;
-  bookSection.appendChild(div);
-}
-   
-   removeFromColl(data){
-     const arr = data.getAttribute('data-value').split('-');
-     this.books = this.books.filter(item => item.title !== arr[0] && item.author !== arr[1]);
-   }
+    bookSection.appendChild(div);
+  }
+
+  removeFromColl(data) {
+    const arr = data.getAttribute('data-value').split('-');
+    this.books = this.books.filter(item => item.title !== arr[0] && item.author !== arr[1]);
+    this.populateStorage();
+  }
+
+  populateStorage() {
+    localStorage.setItem('bookCollection', JSON.stringify({
+      bookColl : this.books,
+    }))
+  }
 
 }
 
@@ -47,13 +59,17 @@ class book {
     this.author = author;
   }
 }
-
 const coll = new collection;
+
+window.onload = () => {
+  if (localStorage.getItem('Books')) {
+    coll.booksArray = localStorage.getItem('Books');
+    coll.books.forEach((element) => {
+      coll.addBook(element);
+    });
+  }
+};
 
 submitBtn.addEventListener('click', () => {
   coll.add(new book(inputTitle.value, inputAuthor.value));
-})
-
-
-
-
+});
