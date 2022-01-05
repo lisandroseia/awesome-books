@@ -4,7 +4,7 @@ const inputTitle = document.getElementById('title');
 const inputAuthor = document.getElementById('author');
 const submitBtn = document.querySelector('.add-btn');
 const bookSection = document.querySelector('.books');
-
+const txt = document.querySelector('form > p');
 class Collection {
   constructor(books = []) {
     this.books = books;
@@ -13,8 +13,10 @@ class Collection {
   add(data) {
     if (this.books.filter((item) => item.author === data.author
       && item.title === data.title).length > 0) {
+      txt.innerHTML = 'Book Already Exists';
       return;
     }
+    txt.innerHTML = 'Book Added';
     this.books.push(data);
     this.display(data);
     this.remove();
@@ -67,6 +69,7 @@ if (localStorage.getItem('bookCollection')) {
     coll.add(new Book(element.title, element.author));
   });
 }
+
 submitBtn.addEventListener('click', () => {
   coll.add(new Book(inputTitle.value, inputAuthor.value));
 });

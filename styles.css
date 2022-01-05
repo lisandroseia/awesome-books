@@ -20,7 +20,8 @@ body {
 
 h1 {
   font-family: 'Nunito', sans-serif;
-  font-size: 3rem;
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
 h2 {
@@ -56,6 +57,7 @@ section {
 
 .books {
   border: 2px solid black;
+  min-width: 600px;
 }
 
 form {
