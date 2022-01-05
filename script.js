@@ -11,8 +11,8 @@ class Collection {
   }
 
   add(data) {
-    if (this.books.filter((item) => item.author === data.author
-    && item.title === data.title).length > 0) {
+    if (this.books.filter((item) => item.author === data.author &&
+        item.title === data.title).length > 0) {
       return;
     }
     this.books.push(data);
@@ -76,18 +76,32 @@ submitBtn.addEventListener('click', () => {
 const navAdd = document.querySelector('#addNew');
 const navList = document.querySelector('#list');
 const navContact = document.querySelector('#contact');
-const booksWindow = document.querySelector('#books-section');
-const addWindow = document.querySelector('#add-books');
-const contactWindow = document.querySelector('#contact-section');
+const booksWindow = document.querySelector('.books-section');
+const addWindow = document.querySelector('.add-books');
+const contactWindow = document.querySelector('.contact-section');
 
-navAdd.addEventListener('click', () => {
-   
-})
+navAdd.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  addWindow.classList.remove('toggle');
+  booksWindow.classList.add('toggle');
+  contactWindow.classList.add('toggle');
+});
 
-navList.addEventListener('click', () => {
-  
-})
+navList.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  booksWindow.classList.remove('toggle');
+  addWindow.classList.add('toggle');
+  contactWindow.classList.add('toggle');
+});
 
-navContact.addEventListener('click', () => {
-  
-})
+navContact.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  contactWindow.classList.remove('toggle');
+  booksWindow.classList.add('toggle');
+  addWindow.classList.add('toggle');
+});
+
+const todayDate = new Date();
+console.log(todayDate);
+const dateSection = document.querySelector('.date');
+dateSection.textContent = todayDate;
