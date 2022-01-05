@@ -4,7 +4,7 @@ const inputTitle = document.getElementById('title');
 const inputAuthor = document.getElementById('author');
 const submitBtn = document.querySelector('.add-btn');
 const bookSection = document.querySelector('.books');
-
+const txt = document.querySelector('form > p');
 class Collection {
   constructor(books = []) {
     this.books = books;
@@ -12,9 +12,11 @@ class Collection {
 
   add(data) {
     if (this.books.filter((item) => item.author === data.author
-    && item.title === data.title).length > 0) {
+      && item.title === data.title).length > 0) {
+      txt.innerHTML = 'Book Already Exists';
       return;
     }
+    txt.innerHTML = 'Book Added';
     this.books.push(data);
     this.display(data);
     this.remove();
@@ -67,6 +69,46 @@ if (localStorage.getItem('bookCollection')) {
     coll.add(new Book(element.title, element.author));
   });
 }
+
 submitBtn.addEventListener('click', () => {
   coll.add(new Book(inputTitle.value, inputAuthor.value));
 });
+
+/* navigation */
+
+const navAdd = document.querySelector('#addNew');
+const navList = document.querySelector('#list');
+const navContact = document.querySelector('#contact');
+const booksWindow = document.querySelector('.books-section');
+const addWindow = document.querySelector('.add-books');
+const contactWindow = document.querySelector('.contact-section');
+
+navAdd.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  addWindow.classList.remove('toggle');
+  booksWindow.classList.add('toggle');
+  contactWindow.classList.add('toggle');
+});
+
+navList.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  booksWindow.classList.remove('toggle');
+  addWindow.classList.add('toggle');
+  contactWindow.classList.add('toggle');
+});
+
+navContact.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  contactWindow.classList.remove('toggle');
+  booksWindow.classList.add('toggle');
+  addWindow.classList.add('toggle');
+});
+
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
+const todayDate = new Date();
+const dateSection = document.querySelector('.date');
+dateSection.textContent = `${monthNames[todayDate.getMonth()]} - ${todayDate.getDay()}th - ${todayDate.getFullYear()} 
+, ${todayDate.getHours()}:${todayDate.getMinutes()} hs`;
