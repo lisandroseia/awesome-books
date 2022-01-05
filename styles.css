@@ -9,7 +9,7 @@
 
 body {
   width: 75%;
-  margin: 200px auto;
+  margin: 100px  auto 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,6 +28,10 @@ h2 {
 }
 
 #books-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .books {
@@ -81,4 +85,59 @@ input {
   font-size: 1rem;
   height: 30px;
   width: 100px;
+}
+
+header{
+  width: 100%;
+  display: flex;
+  position: fixed;
+  inset: 0 0 90vh 0;
+}
+
+.logo{
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navigation{
+  width: 60%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 50px;
+  border: 2px solid black;
+}
+
+.nav-list{
+ display: flex;
+ gap: 30px;
+ list-style: none;
+}
+
+.nav-list  > li > a {
+  text-decoration: none;
+  color: black;
+  font-weight: lighter;
+}
+
+.nav-list > li:nth-child(2){
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  padding: 0 20px;
+}
+
+footer{
+    height: 8vh;
+    width: 80%;
+    border: 2px solid black;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+footer > p{
+  margin: 0 20px;
 }
