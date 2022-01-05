@@ -11,8 +11,8 @@ class Collection {
   }
 
   add(data) {
-    if (this.books.filter((item) => item.author === data.author &&
-        item.title === data.title).length > 0) {
+    if (this.books.filter((item) => item.author === data.author
+      && item.title === data.title).length > 0) {
       return;
     }
     this.books.push(data);
@@ -101,7 +101,11 @@ navContact.addEventListener('click', (evt) => {
   addWindow.classList.add('toggle');
 });
 
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
 const todayDate = new Date();
-console.log(todayDate);
 const dateSection = document.querySelector('.date');
-dateSection.textContent = todayDate;
+dateSection.textContent = `${monthNames[todayDate.getMonth()]} - ${todayDate.getDay()}th - ${todayDate.getFullYear()} 
+, ${todayDate.getHours()}:${todayDate.getMinutes()} hs`;
