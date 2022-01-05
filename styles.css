@@ -27,7 +27,10 @@ h2 {
   font-size: 2rem;
 }
 
-.books-section {
+#books-section {
+}
+
+.books {
   border: 2px solid black;
 }
 

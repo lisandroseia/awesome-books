@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,14 +9,29 @@
     <script src="script.js" defer></script>
     <title>Awesome books</title>
 </head>
-<body>
-    <h1>All awesome books</h1>
-    <section class="books-section">
-        <div class="books">
 
+<body>
+    <header>
+        <div class="navigation">
+            <a href="#" class="logo">Awesome Books</a>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="">List</a></li>
+                    <li><a href="">Add new</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="date"></div>
+    </header>
+
+
+    <section id="books-section">
+        <h1>All awesome books</h1>
+        <div class="books">
         </div>
     </section>
-    <section class="add-books">
+    <section id="add-books">
         <h2>Add a new book</h2>
         <form>
             <input type="text" name="title" id="title" placeholder="Title" required>
@@ -23,5 +39,18 @@
             <button type="button" class="add-btn">Add</button>
         </form>
     </section>
+    <section id="contact">
+        <h2 class="contact-heading"></h2>
+        <p class="contact-text"></p>
+        <ul class="contact-list">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </section>
+    <footer>
+        <h3>Copyright ..</h3>
+    </footer>
 </body>
+
 </html>
