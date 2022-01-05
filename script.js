@@ -70,3 +70,24 @@ if (localStorage.getItem('bookCollection')) {
 submitBtn.addEventListener('click', () => {
   coll.add(new Book(inputTitle.value, inputAuthor.value));
 });
+
+/* navigation */
+
+const navAdd = document.querySelector('#addNew');
+const navList = document.querySelector('#list');
+const navContact = document.querySelector('#contact');
+const booksWindow = document.querySelector('#books-section');
+const addWindow = document.querySelector('#add-books');
+const contactWindow = document.querySelector('#contact-section');
+
+navAdd.addEventListener('click', () => {
+   
+})
+
+navList.addEventListener('click', () => {
+  
+})
+
+navContact.addEventListener('click', () => {
+  
+})
