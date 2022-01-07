@@ -18,15 +18,24 @@ class Collection {
          txt.innerHTML = '';
       }, 1500);
       return;
+    }else if(data.title === '' || data.author === ''){
+      txt.innerHTML = 'Please fill all the fields'
+      setTimeout(() => {
+        txt.innerHTML = '';
+     }, 1500);
+      return
     }
     txt.innerHTML = 'Book Added';
     this.books.push(data);
     this.display(data);
     this.remove();
     this.populateStorage();
+    inputAuthor.value = '';
+    inputTitle.value = '';
     setTimeout(() => {
       txt.innerHTML = '';
    }, 1500);
+
   }
 
   remove() {

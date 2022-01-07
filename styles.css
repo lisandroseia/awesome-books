@@ -39,6 +39,7 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }
 
 .add-books {
@@ -59,6 +60,8 @@ section {
 .books {
   border: 2px solid black;
   min-width: 600px;
+  max-height: 50vh;
+  overflow: auto;
 }
 
 form {
