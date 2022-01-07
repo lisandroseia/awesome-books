@@ -14,6 +14,9 @@ class Collection {
     if (this.books.filter((item) => item.author === data.author
       && item.title === data.title).length > 0) {
       txt.innerHTML = 'Book Already Exists';
+      setTimeout(() => {
+         txt.innerHTML = '';
+      }, 1500);
       return;
     }
     txt.innerHTML = 'Book Added';
@@ -21,13 +24,16 @@ class Collection {
     this.display(data);
     this.remove();
     this.populateStorage();
+    setTimeout(() => {
+      txt.innerHTML = '';
+   }, 1500);
   }
 
   remove() {
     const removeBtns = document.querySelectorAll('.remove-button');
     removeBtns[removeBtns.length - 1].addEventListener('click', (evt) => {
-      bookSection.removeChild(evt.target.parentNode);
       this.removeFromColl(evt.target);
+      bookSection.removeChild(evt.target.parentNode);
     });
   }
 
@@ -44,7 +50,7 @@ class Collection {
 
   removeFromColl(data) {
     const arr = data.getAttribute('data-value').split('-');
-    this.books = this.books.filter((item) => item.title !== arr[0] && item.author !== arr[1]);
+    this.books = this.books.filter((item) => item.title + item.author !== arr[0] + arr[1]);
     this.populateStorage();
   }
 
@@ -110,5 +116,5 @@ const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
 
 const todayDate = new Date();
 const dateSection = document.querySelector('.date');
-dateSection.textContent = `${monthNames[todayDate.getMonth()]} - ${todayDate.getDay()}th - ${todayDate.getFullYear()} 
+dateSection.textContent = `${monthNames[todayDate.getMonth()]} - ${todayDate.getDay() + 2 }th - ${todayDate.getFullYear()} 
 , ${todayDate.getHours()}:${todayDate.getMinutes()} hs`;
